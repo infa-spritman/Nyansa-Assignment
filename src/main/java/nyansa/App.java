@@ -13,7 +13,7 @@ import java.util.Map;
 import java.util.stream.Stream;
 
 /**
- * L  : number of lines in the file
+ * L  : Number of lines in the file
  * U  : Number of unique urls in the file
  * D  : Number of unique days
  *
