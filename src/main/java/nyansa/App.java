@@ -16,7 +16,7 @@ import java.util.stream.Stream;
  * L  : number of lines in the file
  * U  : Number of unique urls in the file
  * D  : Number of unique days
- * <p>
+ *
  * Time complexity : O ( L + D*Log(D) + D*U*Log(U))
  *
  * as L >> D and U >> D ; we can approx the time complexity to be
@@ -27,6 +27,11 @@ import java.util.stream.Stream;
  */
 public class App {
 
+    /**
+     * Fills the dataHashMap for the corresponding entries from the file
+     * @param filePath String representation of the given input file path
+     * @param dateHashMap Map for storing the counts of URL for each given date
+     */
     private static void createMap(String filePath,
                                   Map<LocalDate, HashMap<String, Integer>> dateHashMap) {
 
@@ -59,8 +64,13 @@ public class App {
         }
     }
 
+    /**
+     * Prints tdaily summarized report on url hit count, organized daily (mm/dd/yyyy GMT)
+     * with the earliest date appearing first
+     * @param dateHashMap
+     */
     private static void printMap(Map<LocalDate, HashMap<String, Integer>> dateHashMap) {
-        final DateTimeFormatter pattern = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        final DateTimeFormatter pattern = DateTimeFormatter.ofPattern("MM/dd/yyyy");
 
         dateHashMap.entrySet()
                 .stream()
@@ -82,6 +92,10 @@ public class App {
                 });
     }
 
+    /**
+     * Main Funtion
+     * @param args command line arguments array
+     */
     public static void main(String[] args) {
         if (args.length != 1) {
             System.out.println("Invalid number of arguments");
